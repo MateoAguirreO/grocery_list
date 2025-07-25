@@ -25,6 +25,6 @@ People who want to improve the organization of their shopping and save time at t
 
 ## Suggested Technologies
 
-- **Frontend:** React, Vue, or Angular.
+- **Frontend:** Astro.
 - **Backend:** Node.js, Python (Django/Flask).
 - **Database:** MongoDB, PostgreSQL.
