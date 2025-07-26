@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import node from "@astrojs/node";
 import clerk from "@clerk/astro";
 import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
 import { dark } from '@clerk/themes'
 
 // https://astro.build/config
@@ -14,7 +15,9 @@ export default defineConfig({
           baseTheme: dark,
         },
       }
-    )],
+    ), 
+  react()
+],
   vite: {
     plugins: [tailwindcss()]
   },

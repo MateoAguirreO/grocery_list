@@ -1,13 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { SignedIn, SignedOut } from "@clerk/astro/components";
+import { GroceryListComponent } from "../components/GroceryListComponent";
 ---
 
-<Layout title="Grocery List App">
+<Layout title="Your Grocery List">
   <main class="max-w-xl mx-auto py-12">
-    <h1 class="text-3xl font-bold mb-4">Grocery List App</h1>
-    <p>
-      Welcome to the Grocery List App! This is a simple application to help you
-      manage your grocery lists efficiently. only for authenticated users.
-    </p>
-  </main></Layout
->
+    <SignedOut>
+      <p class="text-center">You must sign in to access this page.</p>
+    </SignedOut>
+
+    <SignedIn>
+      <GroceryListComponent client:load />
+    </SignedIn>
+  </main>
+</Layout>

@@ -1,4 +1,10 @@
 ---
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from "@clerk/astro/react";
 const { title } = Astro.props;
 ---
 
@@ -12,12 +18,30 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <header
+      class="p-4 flex justify-between items-center bg-gray-800 text-white"
+    >
+      <h1 class="text-xl font-bold">{title}</h1>
+      <div>
+        <SignedOut>
+          <SignInButton mode="modal" />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
+    </header>
+
+    <main class="p-4">
+      <slot />
+    </main>
   </body>
 </html>
-<style is: global>
+
+<style is:global>
   @import "tailwindcss";
 </style>
+
 <style>
   html,
   body {
