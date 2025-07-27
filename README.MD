@@ -29,6 +29,8 @@ A full-stack demo web application for managing a personal grocery list. Built wi
 
 ## 🖼️ Project Structure
 
+Frontend
+
 ```bash
 src/
 ├── components/         # React components (GroceryList)
@@ -36,6 +38,22 @@ src/
 ├── pages/              # Astro pages (/ and /groceryList)
 ├── styles/             # Tailwind (if customized)
 middleware
+```
+
+Backend
+
+```bash
+backend/
+├── src/
+│   ├── routes/
+│   │   └── grocery.js
+│   ├── middleware/
+│   │   └── requireAuth.js
+│   ├── models/
+│   │   └── GroceryItem.js
+│   ├── index.js
+├── .env
+├── package.json
 ```
 
 ---
