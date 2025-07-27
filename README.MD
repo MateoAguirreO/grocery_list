@@ -27,6 +27,19 @@ A full-stack demo web application for managing a personal grocery list. Built wi
 
 ---
 
+## 🖼️ Project Structure
+
+```bash
+src/
+├── components/         # React components (GroceryList)
+├── layouts/            # Shared layout with Clerk UI
+├── pages/              # Astro pages (/ and /groceryList)
+├── styles/             # Tailwind (if customized)
+middleware
+```
+
+---
+
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
@@ -39,5 +52,7 @@ npm install
 
 ## 2. Create a .env File
 
+```bash
 CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
+```
