@@ -89,6 +89,10 @@ CLERK_SECRET_KEY=your_clerk_secret_key
 
 ![Software Diagram](software-diagram.png)
 
+## Software Architecture
+
+![Software Architecture](software-Architecture.png)
+
 ## 💡 Improvements & Ideas
 
 ✅ Persist item order (e.g., drag-and-drop sorting).
