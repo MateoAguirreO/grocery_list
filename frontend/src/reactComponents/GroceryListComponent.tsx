@@ -9,9 +9,17 @@ type Item = {
 };
 
 export function GroceryListComponent() {
+  // Always keep input focused
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
   const { getToken } = useAuth();
   const [items, setItems] = useState<Item[]>([]);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const [newItem, setNewItem] = useState("");
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const API_URL = "http://localhost:3000/api/items";
 
@@ -39,6 +47,10 @@ export function GroceryListComponent() {
     );
     setNewItem("");
     fetchItems();
+    // Keep focus on input after adding
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   const toggleTag = async (id: string, tagged: boolean) => {
@@ -52,11 +64,15 @@ export function GroceryListComponent() {
   };
 
   const removeItem = async (id: string) => {
-    const token = await getToken();
-    await axios.delete(`${API_URL}/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    fetchItems();
+    setDeletingId(id);
+    setTimeout(async () => {
+      const token = await getToken();
+      await axios.delete(`${API_URL}/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setDeletingId(null);
+      fetchItems();
+    }, 400); // Animation duration
   };
 
   return (
@@ -64,8 +80,14 @@ export function GroceryListComponent() {
       <h2 className="text-3xl font-bold mb-2">Your Grocery List</h2>
       <div className="flex gap-2">
         <input
+          ref={inputRef}
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              addItem();
+            }
+          }}
           className="px-2 py-2 rounded bg-gray-200 text-black text-lg"
           placeholder="Add new item"
         />
@@ -75,8 +97,19 @@ export function GroceryListComponent() {
       </div>
       <ul className="space-y-2">
         {items.map((item) => (
-          <li key={item._id} className="flex justify-between items-center bg-gray-700 p-3 rounded">
-            <span className={item.tagged ? "line-through text-lg px-2" : "text-lg font-medium px-2"}>{item.name}</span>
+          <li
+            key={item._id}
+            className={`flex justify-between items-center p-3 rounded transition-opacity duration-400 transition-all duration-300 bg-gray-700 ${deletingId === item._id ? 'opacity-0' : 'opacity-100'} ${item.tagged ? 'scale-95' : 'scale-100'}`}
+          >
+            <span
+              className={`px-2 text-lg font-medium transition-all duration-300 ${item.tagged ? 'line-through text-white' : 'text-white'}`}
+              style={{
+                filter: item.tagged ? 'blur(0.5px)' : 'none',
+                opacity: item.tagged ? 0.7 : 1,
+              }}
+            >
+              {item.name}
+            </span>
             <div className="flex gap-2">
               <button
                 onClick={() => toggleTag(item._id, item.tagged)}
