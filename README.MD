@@ -85,6 +85,8 @@ CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
 ```
 
+## Software Diagram
+
 ![Software Diagram](software-diagram.png)
 
 ## 💡 Improvements & Ideas
