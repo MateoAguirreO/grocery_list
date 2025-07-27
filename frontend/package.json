@@ -12,6 +12,7 @@
     "@astrojs/node": "^9.3.0",
     "@astrojs/react": "^4.3.0",
     "@clerk/astro": "^2.10.11",
+    "@clerk/clerk-react": "^5.37.0",
     "@clerk/themes": "^2.4.2",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.3",

@@ -1,17 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { SignedIn, SignedOut } from "@clerk/astro/components";
-import { GroceryListComponent } from "../components/GroceryListComponent";
+import { SignedIn, SignedOut, UserButton } from "@clerk/astro/components";
+import ReactGroceryApp from "../reactComponents/GroceryApp";
 ---
 
-<Layout title="Your Grocery List">
-  <main class="max-w-xl mx-auto py-12">
-    <SignedOut>
-      <p class="text-center">You must sign in to access this page.</p>
-    </SignedOut>
+<Layout title="Grocery List APP">
+  <div style="position: relative;">
+    <div
+      style="position: absolute; top: 1rem; left: 1rem; z-index: 10; color: white;"
+    >
+      <SignedIn>
+        <span
+          style="background: white; color: white; padding: 0.5rem 1rem; border-radius: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: inline-flex; align-items: center; font-weight: 600; font-size: 1rem;"
+        >
+          <UserButton showName />
+        </span>
+      </SignedIn>
+    </div>
+    <main class="max-w-xl mx-auto py-12">
+      <SignedOut>
+        <p class="text-center">You must sign in to access this page.</p>
+      </SignedOut>
 
-    <SignedIn>
-      <GroceryListComponent client:load />
-    </SignedIn>
-  </main>
+      <SignedIn>
+        <ReactGroceryApp client:only="react" />
+      </SignedIn>
+    </main>
+  </div>
 </Layout>

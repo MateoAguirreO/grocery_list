@@ -16,14 +16,13 @@ A full-stack demo web application for managing a personal grocery list. Built wi
 
 ## 🧱 Tech Stack
 
-| Layer      | Technology                       |
-| ---------- | -------------------------------- |
-| Frontend   | Astro + React                    |
-| Auth       | Clerk (hosted auth)              |
-| Styling    | TailwindCSS                      |
-| Backend    | (To implement) Node.js + Express |
-| Database   | (To implement) MongoDB           |
-| API Format | REST with JSON                   |
+| Layer    | Technology           |
+| -------- | -------------------- |
+| Frontend | Astro + React        |
+| Auth     | Clerk (hosted auth)  |
+| Styling  | TailwindCSS          |
+| Backend  | Express.js + MongoDB |
+| API Auth | Clerk JWT validation |
 
 ---
 
@@ -33,11 +32,11 @@ Frontend
 
 ```bash
 src/
-├── components/         # React components (GroceryList)
+├── React/         # React components (GroceryList)
 ├── layouts/            # Shared layout with Clerk UI
 ├── pages/              # Astro pages (/ and /groceryList)
 ├── styles/             # Tailwind (if customized)
-middleware
+middleware.ts
 ```
 
 Backend
@@ -46,11 +45,11 @@ Backend
 backend/
 ├── src/
 │   ├── routes/
-│   │   └── grocery.js
+│   │   └── items.js
 │   ├── middleware/
 │   │   └── requireAuth.js
 │   ├── models/
-│   │   └── GroceryItem.js
+│   │   └── item.js
 │   ├── index.js
 ├── .env
 ├── package.json
@@ -70,7 +69,34 @@ npm install
 
 ## 2. Create a .env File
 
+frontend
+
 ```bash
 CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
 ```
+
+Backend
+
+```bash
+PORT=3000
+MONGO_URI=your_mongo_uri
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+```
+
+![Software Diagram](software-diagram.png)
+
+## 💡 Improvements & Ideas
+
+✅ Persist item order (e.g., drag-and-drop sorting).
+
+✅ Mark priority levels (high, low).
+
+✅ Responsive design.
+
+✅ Share list via link or email.
+
+🔜 Group items by category (e.g., dairy, produce).
+
+🔜 Offline-first (PWA).
