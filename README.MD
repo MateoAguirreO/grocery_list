@@ -32,10 +32,10 @@ Frontend
 
 ```bash
 src/
-├── React/         # React components (GroceryList)
-├── layouts/            # Shared layout with Clerk UI
-├── pages/              # Astro pages (/ and /groceryList)
-├── styles/             # Tailwind (if customized)
+├── React/
+├── layouts/
+├── pages/
+├── styles/
 middleware.ts
 ```
 
