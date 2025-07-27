@@ -1,30 +1,43 @@
-# Concept Application
+# 🛒 Grocery List App
 
-This document describes the conceptual application for managing grocery lists.
+A full-stack demo web application for managing a personal grocery list. Built with **Astro**, **React**, **TailwindCSS**, and **Clerk** for user authentication.
 
-## Description
+---
 
-The application allows users to easily and efficiently create, edit, and manage grocery lists.
+## ✨ Features
 
-## Main Features
+- 🔐 Secure login and session management using Clerk
+- ✅ Add, remove, tag, and un-tag grocery items
+- 👥 User-specific lists — no cross-user access
+- ⚡ Built with modern web stack: Astro + React
+- 🎨 Responsive and clean UI with TailwindCSS
 
-- **List Creation:** Users can create new grocery lists.
-- **List Editing:** Modify the name and items of each list.
-- **Product Management:** Add, remove, and mark products as purchased.
-- **Intuitive Interface:** User-friendly and easy-to-use design.
+---
 
-## Benefits
+## 🧱 Tech Stack
 
-- Efficient organization of shopping.
-- Reduction of forgotten or unnecessary purchases.
-- Quick access from any device.
+| Layer      | Technology                       |
+| ---------- | -------------------------------- |
+| Frontend   | Astro + React                    |
+| Auth       | Clerk (hosted auth)              |
+| Styling    | TailwindCSS                      |
+| Backend    | (To implement) Node.js + Express |
+| Database   | (To implement) MongoDB           |
+| API Format | REST with JSON                   |
 
-## Target Audience
+---
 
-People who want to improve the organization of their shopping and save time at the supermarket.
+## 🚀 Getting Started
 
-## Suggested Technologies
+### 1. Clone the Repository
 
-- **Frontend:** Astro.
-- **Backend:** Node.js, Python (Django/Flask).
-- **Database:** MongoDB, PostgreSQL.
+```bash
+git clone https://github.com/MateoAguirreO/grocery_list.git
+cd grocery_list
+npm install
+```
+
+## 2. Create a .env File
+
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
